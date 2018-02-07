@@ -1,0 +1,23 @@
+<% if @kitten.errors.any? %>
+  <div>
+    <ul>
+      <% @kitten.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for @kitten do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <% [:age, :cuteness, :softness].each do |attribute| %>
+    <div>
+      <%= f.label attribute %>
+      <%= f.number_field attribute %>
+    </div>
+  <% end %>
+<div><%= f.submit "Submit" %></div>
+<% end %>
